@@ -13,8 +13,8 @@ TodoController.list = function (req, res) {
 
 TodoController.create = function (req, res) {
     var t = new Todo({
-	"item":req.body.item,
-	"cat":req.body.cat
+	"description":req.body.description,
+	"categories":req.body.categories
     });
 
     t.save(function (err, result) {
@@ -27,7 +27,7 @@ TodoController.create = function (req, res) {
 };
 
 TodoController.destroy = function (req, res) {
-    Todo.findOne({"item":req.body.item}, function (err, todo) {
+    Todo.findOne({"description":req.body.description}, function (err, todo) {
 	if (err !== null) {
 	    //handle err
 	} else if (todo === null) {
