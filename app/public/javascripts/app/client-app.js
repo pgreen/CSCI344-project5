@@ -82,7 +82,8 @@ var main = function () {
         // add the new item to the todos array
         newObject.description = newItem;
         newObject.categories = newCategoryArray;
-		$.post("/todo/new", newObject, function (response) {
+		$.post("/todos/new", newObject, function (response) {
+			console.log(response);
 			loadAllList(response);
 			$("#item_input").val("");
 			$("#cat_input").val("");
@@ -91,9 +92,8 @@ var main = function () {
     //    loadAllList();
     }//addItem
 
-
     setUpClickHandler($(".tabs .tab"));
-    $.getJSON("../todos.json", function (fileTodos) {
+    $.getJSON("/todos.json", function (fileTodos) {
         todos = fileTodos;//used so can add to this list
         loadAllList();
         loadCatagoriesArray();
